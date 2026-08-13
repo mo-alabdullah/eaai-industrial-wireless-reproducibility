@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite the associated manuscript."
+title: "AI-Enabled Beamforming and Dynamic Spectrum Allocation for Reliable Long-Range IoT over 6G: Reproducibility Artifact"
+type: software
+authors:
+  - family-names: "Alabdullah"
+    given-names: "Mohammed"
+    email: "m.w@sudo-gate.com"
+    orcid: "https://orcid.org/0009-0001-0826-4380"
+    affiliation: "Department of Network Engineering, School of Computer Engineering, Iran University of Science and Technology (IUST), Tehran, Iran"
+version: "1.0.0"
+date-released: 2026-08-13
+license: MIT
+repository-code: "https://github.com/mo-alabdullah/ai-beamforming-dynamic-spectrum-6g-iot"
