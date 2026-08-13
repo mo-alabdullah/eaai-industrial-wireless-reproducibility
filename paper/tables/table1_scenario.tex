@@ -1,0 +1,21 @@
+\begin{table}[t]\centering\small
+\caption{Frozen confirmatory scenario parameters.}\label{tab:scenario}
+\begin{tabular}{@{}p{0.30\columnwidth}p{0.62\columnwidth}@{}}\toprule
+Parameter & Value \\ \midrule
+Access point & ULA, $M=8$ antennas, single cell (OMA) \\
+Devices & 6 static sensors + 2 mobile AMR/AGV ($K=8$) \\
+Subchannels & $N=4$ orthogonal; beam codebook $B=8$ (DFT) \\
+Carrier / bandwidth & $f_c=28$ GHz; $W=1$ MHz per subchannel \\
+Slot / noise figure & $\tau=1$ ms; $NF=7$ dB; $T=290$ K \\
+Power levels & $P\in\{0.05,0.10,0.20,0.40\}$ W; $P_{\max}=0.4$ W \\
+Power budget & $\bar P=0.80$ W (sensitivity 0.64/0.80/0.96) \\
+Channel & 3GPP TR 38.901 InF-SH; Rician/Rayleigh ULA \\
+Deadlines & static 10 / mobile 2 slots; retx 3 / 1 \\
+Queues & static 32 / mobile 16 packets (FIFO) \\
+Packet size & static 256 B / mobile 64 B \\
+Offered load grid & $p\in\{0.05,0.10,0.20,0.30,0.40\}$; $p_{\mathrm{ref}}=0.20$ \\
+Measurement horizon & $T_{\mathrm{meas}}=200$ slots + full drain \\
+Stale CSI & $d_{\mathrm{CSI}}=1$ slot \\
+Confirmatory seeds & $\{20001,\dots,20010\}$ ($n=10$, fresh) \\
+Training budget & 8 episodes $\times$ 10 updates, hidden 48 (bounded) \\
+\bottomrule\end{tabular}\end{table}

@@ -44,6 +44,10 @@ The verifier is read-only with respect to archived experiment results.
 
 ## Confirmatory design
 
+The executed confirmatory scenario uses 6 static sensors and 2 mobile AMR/AGV devices, 4 orthogonal
+subchannels, 8 receive antennas, an 8-beam DFT codebook, four discrete power levels, and a 28 GHz
+carrier. The frozen runtime definition is in `configs/confirmatory_protocol_lock.json`.
+
 Primary confirmatory seeds: `20001`–`20010`.
 
 Offered-load grid:
@@ -52,7 +56,7 @@ Offered-load grid:
 0.05, 0.10, 0.20, 0.30, 0.40
 ```
 
-The archived confirmatory result files are the basis for the manuscript's headline statistics. Exploratory results are kept in a separate directory and are not used as confirmatory inference.
+The archived confirmatory result files are the basis for the manuscript's headline statistics. Exploratory results are kept in a separate directory and are not used as confirmatory inference. The retained `configs/primary_*` N=8 specifications belong to an earlier deterministic action-space design tier; see `configs/README.md` for the distinction from the executed N=4 campaign.
 
 ## License
 

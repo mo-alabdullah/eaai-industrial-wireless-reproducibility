@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
-"""Deterministic scenario/config loader for the M2 simulator .
+"""Deterministic scenario/config loader for the simulator.
 
-Loads the locked primary numeric config (`../../configs/primary_experiment_config.json`) into a flat,
-fully-explicit `ScenarioConfig`. Every physics/PHY/traffic/power/beam/mobility/LPPO value is bound
-from the JSON — the agents and env carry NO hidden defaults (§13). Delivery floors are stored
-explicitly (§5); LPPO cost scales use the FROZEN preregistered Ā references (§7).
+The reported confirmatory campaign is produced by ``confirmatory_config(...)`` and uses
+6 static sensors + 2 mobile AMR/AGV devices, N=4 subchannels, M=8 antennas, B=8 DFT beams,
+4 discrete power levels, a 28 GHz carrier, and T_meas=200 measurement slots followed by drain.
+These values are recorded in ``configs/confirmatory_protocol_lock.json`` and the archived
+confirmatory run manifest.
 
-`campaign_config(load_p)` is the preregistered, computationally-bounded multi-seed campaign
-scenario: it keeps the locked PHYSICS (τ, W, NF, InF-SH large-scale, packet-bits success, P̄,
-d_CSI, delivery floors, frozen scales) but a smaller topology so the full 10-seed × 5-load ×
-all-method campaign is tractable in pure numpy (no GPU). The FULL locked primary (K=8,B=8,P=4,N=8)
-is validated executable by `test_m2`.
+The ``primary_*`` configuration files retained under ``configs/`` describe an earlier N_primary=8
+action-space design used by deterministic specification tests. They are preserved for reproducibility
+and are not the runtime configuration used to produce the reported confirmatory results.
 """
 from __future__ import annotations
 
@@ -23,8 +22,8 @@ from typing import Dict, List
 _HERE = Path(__file__).resolve().parent
 PRIMARY_CONFIG_PATH = _HERE.parent.parent / "configs" / "primary_experiment_config.json"
 
-# InF-SH clutter assumptions (§9) — SELECTED sparse-clutter high-BS values (documented design
-# factors consistent with the InF-SH sub-scenario, TR 38.901 Table 7.2-4 / §7.4.2).
+# InF-SH sparse-clutter high-BS assumptions used by the simulator.
+# The path-loss family follows TR 38.901 InF-SH; the numeric clutter geometry is a study design choice.
 CLUTTER_DENSITY_R = 0.20         # sparse clutter
 CLUTTER_SIZE_M = 10.0           # d_clutter (sparse, large machinery)
 CLUTTER_HEIGHT_M = 5.0          # h_c (below the 8 m high BS)
@@ -92,15 +91,14 @@ class ScenarioConfig:
     eps_mobile: float
     eta_static: float
     eta_mobile: float
-    # LPPO (§13 — all bound from JSON, no hidden defaults)
+    # PPO/constraint parameters are bound from the JSON configuration; no hidden defaults.
     lppo: Dict = field(default_factory=dict)
     # campaign knobs
     n_ep_train: int = 8
     n_updates: int = 10
     ppo_hidden: int = 32
-    # spectral-efficiency reward weight (w7); 0 = reliability-only ;
-    # >0 = confirmatory multi-objective reliability+SE reward  that makes beam
-    # selection identifiable in the learning signal.
+    # Spectral-efficiency reward weight (w7). The reported confirmatory campaign uses w7_se=0.0;
+    # positive values are available for sensitivity experiments.
     w7_se: float = 0.0
 
     @property
@@ -124,8 +122,8 @@ class ScenarioConfig:
         return self.pkt_bytes_mobile * 8
 
     def frozen_cost_scales(self):
-        """FROZEN per-constraint scales s_c = 1/(max(Ā_c^ref, A_floor)*T_meas) — identical across
-        ALL loads/methods/seeds (§7). Order = J_cost: [rel,dv,over]*(static,mobile), C_pow."""
+        """Frozen per-constraint scales, identical across loads, methods, and seeds.
+        Order = J_cost: [rel,dv,over]*(static,mobile), C_pow."""
         import numpy as np
         Tm = self.t_meas_slots
         Af = self.lppo["A_floor"]
@@ -218,16 +216,14 @@ def confirmatory_config(load_p: float, fading_correlation: str = "jakes",
                         clutter_height_hc_m: float = 5.0, fc_ghz: float = 28.0,
                         n_ep_train: int = 16, n_updates: int = 20, ppo_hidden: int = 48,
                         eta_lambda: float = None, penalty_coeff: float = None) -> ScenarioConfig:
-    """CONFIRMATORY_PROTOCOL_v1  — frozen BEFORE confirmatory seeds.
+    """Frozen confirmatory scenario used for the reported primary results.
 
-    6 static + 2 mobile devices, N=4 subchannels (post-pilot amendment for identifiability/
-    congestion, chosen before any confirmatory seed), M=8 antennas, B=8 DFT beams, P=4 power
-    levels [0.05,0.10,0.20,0.40] W, P_max=0.4, per-device cap 0.8 W, T_meas=200, τ=1 ms,
-    W=1 MHz, NF=7 dB, fc=3.5 GHz, InF-SH hall 300×150 m, d_CSI=1.
-    Power: P_envelope = N·P_max = 1.6 W; P̄ = 0.8 W (50%); sensitivity {0.64,0.80,0.96}.
-    Delivery floors (EMPIRICAL_OPERATIONAL, PREREGISTERED_DESIGN_FACTOR): static 0.99, mobile 0.995
-    — the 3GPP URLLC ~1e-5 loss order is a STANDARD_REFERENCE only, NOT an empirically-certified
-    finite-sample threshold here.
+    6 static + 2 mobile devices; N=4 subchannels; M=8 antennas; B=8 DFT beams; 4 power levels
+    [0.05, 0.10, 0.20, 0.40] W; P_max=0.4 W; per-device cap 0.8 W; T_meas=200; slot duration
+    1 ms; W=1 MHz per subchannel; NF=7 dB; fc=28 GHz; InF-SH hall 300×150 m; d_CSI=1 slot.
+    The average-power reference is 0.8 W, with sensitivity values 0.64/0.80/0.96 W.
+    Empirical delivery floors are 0.99 (static) and 0.995 (mobile). The 10^-5 URLLC loss order
+    is a standards reference only and is not claimed as a finite-sample certification target.
     """
     base = load_primary()
     lp = dict(base.lppo)
@@ -254,7 +250,7 @@ def confirmatory_config(load_p: float, fading_correlation: str = "jakes",
         d_csi_slots=d_csi_slots, v_max_mps=v_max_mps,
         eps_static=0.01, eps_mobile=1e-4, eta_static=0.01, eta_mobile=1e-3,
         lppo=lp, n_ep_train=n_ep_train, n_updates=n_updates, ppo_hidden=ppo_hidden,
-        w7_se=0.0,   # confirmatory = exact locked BSA reliability reward (r=w1*d - w4*hol + w6*util)
+        w7_se=0.0,   # confirmatory reward: delivery - head-of-line age + utilisation
     )
     return cfg
 

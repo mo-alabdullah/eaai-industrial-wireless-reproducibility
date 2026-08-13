@@ -12,7 +12,7 @@
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{calc}
-\graphicspath{{figures/}}
+\graphicspath{{../figures/}}
 \newcommand{\SINR}{\mathrm{SINR}}
 
 \begin{document}
@@ -149,6 +149,8 @@ where $s_i$ is a fixed scaling factor. Multipliers are updated once per training
 The cost channel uses $\gamma_{\mathrm{cost}}=1$ and $\lambda_{\mathrm{cost}}=0.95$. The reward used in the final evaluation combines successful delivery, head-of-line age, and subchannel utilisation. Unconstrained and fixed-penalty PPO variants use the same network and action construction so that differences can be attributed to the constraint mechanism rather than to a different action space.
 
 \section{Experimental Setup}\label{experimental-setup}
+This extended study broadens the initial scheduling-focused investigation into a confirmatory joint scheduling, spectrum, receive-beam, and power-control evaluation against a stronger set of non-learning baselines, under the frozen protocol described below.
+
 The final evaluation used a fixed scenario and analysis plan before outcome analysis. Calibration runs used only seeds 10001--10003. Primary inference used ten fresh seeds, 20001--20010, matched across methods and evaluated at the five offered-load points. The primary comparison consisted of 12 methods, 10 seeds, and 5 loads, yielding 600 method--load--seed records. Secondary analyses examined CSI delay, power budget, channel correlation, clutter height, and token order.
 
 Layer~1 isolates scheduling under fixed radio settings and compares Fixed-Radio Random with Fixed-Radio Base PPO. Layer~2 evaluates Random, Round Robin, EDF, Stale-Max-Gain, current-CSI Max-SINR, a perfect-current-CSI beam oracle, Last-Beam, BSA-Unconstrained-PPO, BSA-Penalty-PPO, and BSA-C-PPO in the full action space.

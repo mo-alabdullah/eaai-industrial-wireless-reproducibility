@@ -16,7 +16,9 @@ The verifier runs the scientific unit/regression suites and checks the archived 
 
 ## Confirmatory results
 
-The confirmatory campaign uses matched seeds 20001–20010 and the five-load grid stored in `configs/confirmatory_protocol_lock.json`. Seed-level metrics and paired statistical comparisons are archived in `results/confirmatory/`.
+The confirmatory campaign uses matched seeds 20001–20010 and the five-load grid stored in `configs/confirmatory_protocol_lock.json`. Its executed radio configuration uses N=4 subchannels, M=8 antennas, B=8 receive beams, and a 28 GHz carrier. Seed-level metrics and paired statistical comparisons are archived in `results/confirmatory/`.
+
+The retained `configs/primary_*` files contain an earlier N_primary=8 deterministic action-space specification used by unit/regression tests; they are not the runtime scenario used for the reported confirmatory results. See `configs/README.md`.
 
 ## Re-running the campaign
 

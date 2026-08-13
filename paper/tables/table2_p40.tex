@@ -1,0 +1,13 @@
+\begin{table*}[t]\centering\small
+\caption{Confirmatory results at peak load $p=0.40$ (seed-mean, $n=10$). PDR = packet delivery ratio; power in W; beam accuracy vs the current-CSI oracle (random chance $=0.125$).}\label{tab:p40}
+\begin{tabular}{@{}lccccc@{}}\toprule
+Method & PDR (static) & PDR (mobile) & p95 latency (slots) & Mean power (W) & Beam accuracy \\ \midrule
+EDF & 1.000 & 1.000 & 2.2 & 1.282 & 0.924 \\
+Max-SINR oracle & 0.999 & 0.976 & 2.0 & 1.274 & 1.000 \\
+Stale-Max-Gain & 1.000 & 0.980 & 2.0 & 1.276 & 0.924 \\
+Random & 1.000 & 0.967 & 2.6 & 0.623 & 0.128 \\
+BSA-Uncon.-PPO & 0.993 & 0.959 & 2.8 & 0.599 & 0.081 \\
+BSA-C-PPO & 0.993 & 0.959 & 2.8 & 0.599 & 0.081 \\
+L1 Fixed Random & 0.989 & 0.815 & 6.5 & 1.235 & 0.135 \\
+L1 Fixed Base PPO & 0.575 & 0.458 & 5.4 & 0.706 & 0.127 \\
+\bottomrule\end{tabular}\end{table*}
