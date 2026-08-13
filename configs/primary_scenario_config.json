@@ -1,0 +1,57 @@
+{
+  "_comment": "Locked PRIMARY-study scenario config (r27 §5, completed r28 §5). All entries are DESIGN PARAMETERS (a configuration choice, NOT a result). The primary action spec is generated deterministically from this file by generate_primary_action_spec.py. N_primary must equal config_schema.md's preregistered N_primary=8.",
+  "scenario_id": "PRIMARY-IIoT-6G",
+  "config_version": "primary-v1",
+
+  "n_static": 6,
+  "n_mobile": 2,
+  "codebook_type": "DFT",
+  "codebook_size": 8,
+  "n_antennas": 8,
+  "power_levels": 4,
+  "power_level_watts": [0.05, 0.1, 0.2, 0.4],
+  "n_primary": 8,
+
+  "class_map_rule": "device static_i has class 'static' (static industrial sensor); device mobile_j has class 'mobile' (AMR/AGV). The ordered device ids are static_0..static_{n_static-1} then mobile_0..mobile_{n_mobile-1}.",
+
+  "n_max_rule": "per-class per-device subchannel cap N_max_k in the CANONICAL domain 1..N_primary (r30 §4): static devices use n_max_static, mobile devices use n_max_mobile (NOT silently N_primary; N_max=0 is not permitted — a disabled device is removed from the canonical set).",
+  "n_max_static": 3,
+  "n_max_mobile": 2,
+
+  "per_device_total_power_cap_rule": "uniform per-device total transmit-power cap across a device's assigned subchannels: P_tot_k = per_device_total_power_cap_w for every device (watts).",
+  "per_device_total_power_cap_w": 0.8,
+
+  "beam_validity_rule": "in the primary scenario every (subchannel, beam) pair is valid (beam_forbidden = empty) and every (subchannel, power) pair is valid (power_forbidden = empty); the delayed/noisy-CSI beam-observation reopening (gate criteria 7/8) is handled separately and does NOT change this on-paper validity set.",
+
+  "power_cap_state_schema": {
+    "slot_start_state.eligible": "mapping device_id -> nonnegative int eligible-packet count at slot start",
+    "slot_start_state.power_cap": "mapping device_id -> nonnegative finite per-device total-power cap in watts (equals per_device_total_power_cap_w in the primary scenario)"
+  },
+
+  "ordering_rule": {
+    "device": "static devices first in ascending index (static_0..static_{Ks-1}), then mobile devices in ascending index (mobile_0..mobile_{Km-1})",
+    "beam": "codebook index ascending (beam_0..beam_{B-1})",
+    "power": "power level ascending by watts (power_0 is the smallest watt value)"
+  },
+
+  "design_justification": {
+    "n_static=6, n_mobile=2": "8 uplink devices matched to N_primary=8 subchannels; a static-majority industrial floor (6 fixed sensors) with 2 mobile AMR/AGV, reflecting the static-vs-mobile distinction in the accepted abstract. DESIGN FACTOR (not a measured value).",
+    "codebook_size B=8": "finite DFT receive codebook of size B=8 for the locked n_antennas=8 ULA (one beam per array steering index). B=8 and n_antennas=8 are DESIGN FACTORS (a design choice, not an external measured value). Only the DFT/ULA codebook FAMILY (not the numeric size 8) has literature provenance (S12/S19); the numeric B=8=n_antennas is preregistered, not sourced.",
+    "power_levels P=4": "4 discrete uplink power levels give a small tractable discrete power action. DESIGN FACTOR.",
+    "power_level_watts": "[0.05,0.1,0.2,0.4] W — geometric (x2) spacing spanning ~9 dB. DESIGN FACTOR / SENSITIVITY (exact watts to be swept in sensitivity analysis).",
+    "n_max_static=3, n_max_mobile=2": "per-class subchannel caps (< N_primary) that let a device occupy several subchannels but not monopolise all 8. DESIGN FACTOR.",
+    "per_device_total_power_cap_w=0.8": "per-device total-power cap = 2 x the max single-subchannel power (0.4 W), allowing at most two max-power allocations per device. DESIGN FACTOR."
+  },
+
+  "primary_power_grid_w": [0.05, 0.1, 0.2, 0.4],
+  "power_grid_sensitivity_variants_w": [[0.02, 0.05, 0.1, 0.2], [0.1, 0.2, 0.4, 0.8]],
+  "grid_classification_rule": "r31 §6: the COMMITTED primary action alphabet ALWAYS uses primary_power_grid_w (PREREGISTERED_DESIGN_FACTOR). power_grid_sensitivity_variants_w are SENSITIVITY_VALUE alternatives evaluated only as separate, versioned scenarios/specs; they never replace the primary grid in the committed primary_action_spec.json. The same primary-vs-sensitivity split applies to N_max (primary n_max_static=3/n_max_mobile=2) and the per-device power cap (primary 0.8 W).",
+
+  "design_parameter_register": {
+    "_classification_note": "r29 §10 / r31 §6: a project config is NOT an external scientific source. Only genuine external literature provenance is 'sourced'; every numeric project choice (N_primary=8, B=8, n_antennas=8, the primary power grid, per-class N_max, per-device cap) is a PREREGISTERED_DESIGN_FACTOR. SENSITIVITY_VALUE entries are alternatives swept in separate versioned scenarios and never appear in the committed primary spec.",
+    "sourced": ["DFT/ULA codebook FAMILY (S12/S19 provenance) — FAMILY only, NOT the numeric size"],
+    "preregistered_design_factors": ["N_primary=8", "n_antennas=8", "n_static=6", "n_mobile=2", "codebook_size=8", "power_levels=4", "n_max_static=3", "n_max_mobile=2", "per_device_total_power_cap_w=0.8", "primary_power_grid_w=[0.05,0.1,0.2,0.4]"],
+    "sensitivity_values": ["power_grid_sensitivity_variants_w (alternative power grids, separate versioned specs)", "n_max-per-class sensitivity alternatives", "per-device power-cap sensitivity alternatives"],
+    "unresolved": ["industrial/long-range path-loss + channel-model provenance (gate criterion 14)", "delayed/noisy-CSI beam-observation model (gate criteria 7/8)", "P_bar average-power budget value (pending a verified industrial reference)", "T_meas fixed power-measurement window length", "per-class LPPO budgets rho_c / epsilon_c / eta_c", "per-class scale-reference arrival rate A_bar_c_scale_reference", "packet size / queue capacity / deadlines / max retransmissions", "load-grid arrival process", "primary mobility design model (M1 scientific blocker)"]
+  }
+}

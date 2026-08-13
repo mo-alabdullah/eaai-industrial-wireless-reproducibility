@@ -1,0 +1,17 @@
+{
+  "E1_pilot": "PASSED",
+  "FULL_EXPERIMENTS": "PASSED",
+  "no_nonfinite_results": true,
+  "problems": [],
+  "full_drain_complete": true,
+  "expected_records": 600,
+  "actual_records": 600,
+  "complete_grid": true,
+  "reproducible_rerun": true,
+  "feasible_load_region": [
+    0.05,
+    0.1,
+    0.2
+  ],
+  "collapse_load_threshold": 0.3
+}

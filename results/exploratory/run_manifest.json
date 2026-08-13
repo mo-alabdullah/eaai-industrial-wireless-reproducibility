@@ -1,0 +1,84 @@
+{
+  "round": "r35-EXPERIMENTS",
+  "generated_utc": "2026-08-11T16:17:27Z",
+  "code_sha256": "a64defe5ed661cccc9390ec08dffc7bbc6ecd7f2e4aaa1c71788d0659da249c1",
+  "campaign_config_sha256": "8ba491adde3abd87fe166a330683a9c349ca593845812662e9699a927cbcc4f4",
+  "loads": [
+    0.05,
+    0.1,
+    0.2,
+    0.3,
+    0.4
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "n_methods": 12,
+  "method_order": [
+    "L1-Fixed-Random",
+    "L1-Fixed-BasePPO",
+    "Random",
+    "RoundRobin",
+    "EDF",
+    "StaleMaxGain",
+    "MaxSINROracle",
+    "PerfectMaxGain",
+    "LastBeam",
+    "BSA-Unconstrained-PPO",
+    "BSA-Penalty-PPO",
+    "BSA-C-PPO"
+  ],
+  "layer1_methods": [
+    "L1-Fixed-Random",
+    "L1-Fixed-BasePPO"
+  ],
+  "layer2_methods": [
+    "Random",
+    "RoundRobin",
+    "EDF",
+    "StaleMaxGain",
+    "MaxSINROracle",
+    "PerfectMaxGain",
+    "LastBeam",
+    "BSA-Unconstrained-PPO",
+    "BSA-Penalty-PPO",
+    "BSA-C-PPO"
+  ],
+  "expected_campaign_records": 600,
+  "actual_campaign_records": 600,
+  "campaign_topology": {
+    "n_static": 8,
+    "n_mobile": 3,
+    "n_subchannels": 4,
+    "n_antennas": 4,
+    "codebook_size": 4,
+    "n_power_levels": 4,
+    "t_meas": 50,
+    "n_ep_train": 3,
+    "n_updates": 5,
+    "ppo_hidden": 20
+  },
+  "locked_physics": {
+    "tau_s": 0.001,
+    "W_hz": 1000000.0,
+    "NF_db": 7.0,
+    "P_bar_w": 1.6,
+    "d_csi": 1,
+    "k_subce_m": 83.22637361488452,
+    "scenario": "InF-SH",
+    "pkt_bits_static": 2048,
+    "pkt_bits_mobile": 512,
+    "delivery_floor_static": 0.99,
+    "delivery_floor_mobile": 0.99999
+  },
+  "note": "Preregistered computationally-bounded campaign scenario (locked physics; K>>N congestion topology). Full locked primary K=8,B=8,P=4,N=8 validated executable by test_m2."
+}

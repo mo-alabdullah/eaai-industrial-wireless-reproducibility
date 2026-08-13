@@ -1,0 +1,26 @@
+kind,a,b,c,d
+# Second deterministic design fixture — covers action masks, per-device total-power
+# cap ENFORCED AS A FEASIBILITY MASK (fixed per-attempt power p_w; NO equal-power split),
+# repeated-user/multiple-subchannel allocation, insufficient queued packets / idle,
+# and mutually-exclusive drop precedence.
+param,sigma2,1.0,,linear noise power
+param,gamma_th,1.0,,Shannon threshold 2^(Z/(W*tau))-1 (derived+verified)
+param,Z_bits,100,,packet size
+param,W_hz,100000,,subchannel bandwidth
+param,tau_s,0.001,,slot duration (W*tau=100)
+param,p_w,1.0,,FIXED per-attempt transmit power (no equal-power split)
+param,g_beam,1.0,,fixed receive-beam gain G
+param,max_retx,1,,retry allowed once; 2nd failure exhausts retransmission
+param,horizon_slots,3,,slots t=0,1,2
+powercap,D1,2.0,,per-device total tx power cap; enforced as a feasibility mask
+packet,Q1,D1,0,3,deadline_slot=2; fails slots0-1 then retx-exhausted at slot1
+packet,Q2,D1,0,1,deadline_slot=0; expires (DEADLINE) at slot1 before service
+packet,Q3,D1,0,8,deadline_slot=7; delivered at slot2 (H2=1.0 -> gamma=1.0)
+assign,n1,D1,,repeated user: all four subchannels map to D1
+assign,n2,D1,,repeated user
+assign,n3,D1,,repeated user (power_cap_violation when cap already spent)
+assign,n4,D1,,repeated user (masked every slot below)
+mask,n4,D1,all,n4 forbidden for D1 in every slot (action mask)
+link,D1,0,0.5,H2=0.5 (both active attempts fail)
+link,D1,1,0.5,H2=0.5 (both active attempts fail)
+link,D1,2,1.0,H2=1.0 (single served attempt reaches gamma_th)

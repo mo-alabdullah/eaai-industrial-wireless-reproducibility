@@ -1,0 +1,34 @@
+kind,a,b,c,d,e
+# Full-drain counterpart of fixture 3: an extra slot serves Q3 to a terminal state, so
+# the censored set is EMPTY and PDR_resolved == PDR_lb (no censoring). Demonstrates the
+# full-drain accounting alongside the bounded-drain fixture 3.
+param,sigma2,1.0,,,linear noise power
+param,gamma_th,1.0,,,Shannon threshold 2^(Z/(W*tau))-1
+param,Z_bits,100,,,packet size
+param,W_hz,100000,,,subchannel bandwidth
+param,tau_s,0.001,,,slot duration (W*tau=100)
+param,horizon_slots,4,,,slots 0,1,2,3 (extra slot drains Q3)
+param,n_subchannels,2,,,explicit N (canonical set n1,n2)
+param,max_retx,1,,,retry once
+beamgain,b1,2.0,,,max-gain receive beam
+beamgain,b2,0.5,,,inferior receive beam
+powerlevel,p1,1.0,,,low power
+powerlevel,p2,2.0,,,high power
+powercap,D1,2.0,,,per-device total tx power per slot
+packet,Q1,D1,0,100,,never expires
+packet,Q2,D1,0,100,,never expires
+packet,Q3,D1,0,100,,drained in slot 3
+link,D1,0,1.0,,,H2=1
+link,D1,1,1.0,,,H2=1
+link,D1,2,1.0,,,H2=1
+link,D1,3,1.0,,,H2=1
+beammask,0,n2,b1,,,max-gain beam forbidden on n2 in slot 0
+powermask,1,n2,p2,,,high power forbidden on n2 in slot 1
+action,0,n1,D1,b1,p1,max-gain beam + low power -> gamma=2 success (Q1)
+action,0,n2,D1,b1,p1,selects MASKED beam b1 -> beam_mask_violation
+action,1,n1,D1,b2,p1,deliberately inferior beam b2 -> suboptimal + fail (Q2)
+action,1,n2,D1,b1,p2,selects MASKED power p2 -> power_mask_violation
+action,2,n1,D1,b1,p2,cap ok (cum 2.0) -> gamma=4 success (Q2)
+action,2,n2,D1,b1,p2,cap exceeded -> power_cap_violation
+action,3,n1,D1,b1,p1,drain: serve remaining Q3 at max-gain -> gamma=2 success
+action,3,n2,D1,idle,idle,explicit idle token (exactly N=2 tokens per slot)

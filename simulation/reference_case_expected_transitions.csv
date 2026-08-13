@@ -1,0 +1,7 @@
+slot,subchannel,device,packet_served,H2,gamma,success,retry_after,event
+0,n1,D1,P1,0.5,0.5,0,1,fail_retry
+0,n2,D2,P2,0.5,0.5,0,1,fail_retry
+1,n1,D1,P1,2.0,2.0,1,1,deliver
+1,n2,D2,P2,0.5,0.5,0,2,fail_retry
+2,n1,D1,,,,,,idle_queue_empty
+2,n2,D2,,,,,,deadline_expired_before_service

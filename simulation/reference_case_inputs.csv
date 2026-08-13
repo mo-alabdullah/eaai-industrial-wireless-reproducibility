@@ -1,0 +1,19 @@
+kind,a,b,c,d
+param,sigma2,1.0,,linear noise power
+param,gamma_th,1.0,,Shannon threshold 2^(Z/(W*tau))-1
+param,Z_bits,100,,packet size
+param,W_hz,100000,,subchannel bandwidth
+param,tau_s,0.001,,slot duration (W*tau=100)
+param,p_w,1.0,,fixed tx power per attempt
+param,g_beam,1.0,,fixed receive-beam gain G
+param,max_retx,999,,no retransmission-exhaustion (drops by deadline)
+param,horizon_slots,3,,slots t=0,1,2
+packet,P1,D1,0,8
+packet,P2,D2,0,2
+assign,n1,D1,,fixed subchannel->device
+assign,n2,D2,,fixed subchannel->device
+link,D1,0,0.5,H2 gamma=0.5 fail
+link,D1,1,2.0,H2 gamma=2.0 success
+link,D2,0,0.5,H2 gamma=0.5 fail
+link,D2,1,0.5,H2 gamma=0.5 fail
+link,D2,2,0.5,H2 gamma=0.5 fail (not used: P2 expires before slot 2 service)

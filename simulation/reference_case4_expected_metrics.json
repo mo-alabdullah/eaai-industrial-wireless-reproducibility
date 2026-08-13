@@ -1,0 +1,18 @@
+{
+  "PDR_lb_D1": 1.0,
+  "PDR_resolved_D1": 1.0,
+  "censored_fraction_D1": 0.0,
+  "drop_ratio_excl_censored_D1": 0.0,
+  "link_outage_rate_D1": 0.0,
+  "PDR_lb_aggregate": 1.0,
+  "PDR_resolved_aggregate": 1.0,
+  "censored_fraction_aggregate": 0.0,
+  "energy_joules_total": 0.002,
+  "spectrum_utilization_avg": 0.6667,
+  "beam_mask_violation": 0,
+  "power_mask_violation": 0,
+  "power_cap_violation": 0,
+  "beam_suboptimal": 0,
+  "packet_mask_violation": 0,
+  "note": "SELECTED-POLICY packet-aware mask fixture. D1 allocated N=3 subchannels, only 2 eligible packets (Q1,Q2). n1,n2 deliver (gamma=p1*H2*b1=2.0); the SURPLUS n3 carries an EXPLICIT idle token (idle_action), NOT an environment-side idle_queue_empty conversion. packet_mask_violation=0 for the correct policy. util = served/N = 2/3 = 0.6667; energy = 2*p1*tau = 0.002 J. A tamper test flips n3 to a non-idle token and asserts packet_mask_violation=1 (never repaired to idle)."
+}

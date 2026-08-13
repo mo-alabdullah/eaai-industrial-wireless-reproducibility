@@ -1,0 +1,28 @@
+{
+  "_comment": "REFERENCE (toy) ordered action spec for unit tests ONLY (r27 \u00a75). NOT the primary study spec \u2014 the primary spec is generated from primary_scenario_config.json into primary_action_spec.json (N_primary=8). A reference spec must NOT be passed as the primary spec.",
+  "version": "v1",
+  "device_order": [
+    "d0",
+    "d1"
+  ],
+  "beam_order": [
+    "b0",
+    "b1",
+    "b2"
+  ],
+  "power_order": [
+    "p_lo",
+    "p_hi"
+  ],
+  "canonical_signature": "47252988004ab9a1d24774f27db29e1039331fbc92c5d6f367950100fad5f70f",
+  "N_primary": 3,
+  "tier": "reference",
+  "powers": {
+    "p_lo": 1.0,
+    "p_hi": 2.0
+  },
+  "n_max": {
+    "d0": 3,
+    "d1": 3
+  }
+}

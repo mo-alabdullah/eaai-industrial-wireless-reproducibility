@@ -20,4 +20,4 @@ The confirmatory campaign uses matched seeds 20001–20010 and the five-load gri
 
 ## Re-running the campaign
 
-The campaign runner is `tools/run_confirmatory.py`. Re-running is optional and can be computationally expensive. Archived result files should be treated as immutable reference outputs when validating the published analysis.
+The campaign runner is `tools/run_confirmatory.py`. Re-running is optional and can be computationally expensive. The archived result files should be treated as immutable reference outputs when validating the published analysis.

@@ -1,0 +1,14 @@
+{
+  "CONFIRMATORY_EXPERIMENTS": "PASSED",
+  "records": 600,
+  "expected": 600,
+  "complete_grid": true,
+  "no_problems": true,
+  "problems": [],
+  "full_drain_complete": true,
+  "collapse_load_threshold": 0.4,
+  "beam_learning_gate": "NOT MET (learned beam accuracy ~chance; see TRAINING_CALIBRATION_REPORT.md)",
+  "constraint_differentiation_gate": "NOT MET (BSA-C-PPO greedy == BSA-Unconstrained under this budget)",
+  "code_sha256": "d856cce66b67a2e32092a7183e4e103c757f381b08e2c491a134a5673fb7a36a",
+  "config_sha256": "6467d5750ad3e7a235115b895917bdb82cdbf8e5b77280fc53bd90f01ff61001"
+}

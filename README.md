@@ -8,9 +8,9 @@ Reproducibility repository for the research implementation, confirmatory data, t
 
 ## Study overview
 
-This repository evaluates resource allocation for mixed static-sensor and mobile AMR/AGV traffic in an indoor industrial mmWave setting. The implementation combines finite-codebook receive-beam selection, dynamic subchannel allocation, discrete power control, queue/deadline accounting, and PPO-based constrained control.
+The repository evaluates resource allocation for mixed static-sensor and mobile AMR/AGV traffic in an indoor industrial mmWave setting. The implementation combines finite-codebook receive-beam selection, dynamic subchannel allocation, discrete power control, queue/deadline accounting, and PPO-based constrained control.
 
-The confirmatory campaign uses fresh matched seeds across five offered loads. In the evaluated regime, deadline-aware heuristics provide the strongest packet-delivery reliability. The learned policies operate at lower average transmit power, while learned beam selection remains weak under the bounded training budget and the Lagrangian variant is not measurably differentiated from the unconstrained PPO variant in the primary results.
+The final confirmatory campaign uses fresh matched seeds across five offered loads. The principal result is deliberately non-triumphal: strong deadline-aware heuristics dominate packet-delivery reliability in the evaluated regime, while the learned policies operate at lower average transmit power. Learned beam selection remains weak under the bounded training budget, and the Lagrangian variant is not measurably differentiated from the unconstrained PPO variant in the primary results.
 
 ## Repository layout
 
@@ -19,7 +19,7 @@ The confirmatory campaign uses fresh matched seeds across five offered loads. In
 - `configs/`: scenario, action-specification, and confirmatory-protocol configuration.
 - `tools/`: confirmatory runner and publication-data utilities.
 - `results/confirmatory/`: frozen confirmatory seed-level results and statistics.
-- `results/exploratory/`: exploratory/pilot summaries kept separate from confirmatory inference.
+- `results/exploratory/`: exploratory/pilot summaries retained separately from confirmatory inference.
 - `figures/`: publication figures.
 - `paper/`: manuscript source, generated PDF, document file, and document class.
 - `docs/`: reproducibility and integrity notes.
@@ -52,7 +52,7 @@ Offered-load grid:
 0.05, 0.10, 0.20, 0.30, 0.40
 ```
 
-The archived confirmatory result files are the basis for the manuscript's headline statistics. Exploratory results are stored separately and are not used for confirmatory inference.
+The archived confirmatory result files are the basis for the manuscript's headline statistics. Exploratory results are kept in a separate directory and are not used as confirmatory inference.
 
 ## License
 

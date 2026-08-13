@@ -1,0 +1,6 @@
+load,feasible_rate,first_violation
+0.05,0.7,C_rel_static
+0.1,0.7,C_rel_static
+0.2,0.7,C_rel_static
+0.3,0.6,C_rel_mobile
+0.4,0.1,C_rel_mobile

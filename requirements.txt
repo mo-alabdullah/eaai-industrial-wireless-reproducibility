@@ -1,0 +1,24 @@
+# Pinned at design time (verify compatibility at install; 2026-07-25).
+# Stable-Baselines3 2.9.0 (2026-06-15): PPO supports Discrete action spaces + Gymnasium v1.0.
+stable-baselines3==2.9.0
+sb3-contrib==2.9.0          # MaskablePPO / action masking (evaluate for BSA-*-PPO (provisional))
+gymnasium>=1.0,<2.0
+torch>=2.2                  # confirm exact version compatible with SB3 2.9.0 at install
+numpy>=1.26
+scipy>=1.11                 # statistical tests, CIs
+pandas>=2.0                 # results tables
+matplotlib>=3.8            # figures (raw-data-driven)
+openpyxl>=3.1              # xlsx outputs
+pyyaml>=6.0               # config files
+pytest>=8.0              # test suite
+# Notes:
+#  - Discrete(1+K*B*P) is only the per-subchannel decoder-token alphabet. The actual per-slot
+#    action is a length-N JOINT AUTOREGRESSIVE sequence (SLOT-LEVEL JOINT-AUTOREGRESSIVE PPO
+#    ACTION FORMULATION). Stock MaskablePPO does NOT implement this joint distribution (it masks
+#    one Discrete head); a custom autoregressive policy or a one-macro-step env is required (M2).
+#  - Constrained RL: the enforcement mechanism is NOT selected. The choice among
+#    Penalty-PPO / Lagrangian-PPO / CPO is a Gate-M1 mathematical comparison on paper
+#    (cost-value, dual update, feasibility reporting, complexity, joint-AR compatibility) —
+#    NOT an M2 spike (see ../06_mathematical_model/constraint_enforcement_options.md). Do NOT
+#    assume a penalty/Lagrangian wrapper and do NOT pin a constrained-RL package here until the
+#    mechanism is selected; CPO may require a different library than SB3/sb3-contrib.
