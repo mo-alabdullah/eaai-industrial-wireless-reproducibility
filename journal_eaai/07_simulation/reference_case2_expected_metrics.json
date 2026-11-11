@@ -1,0 +1,12 @@
+{
+  "PDR_D1": 0.3333333333333333,
+  "deadline_violation_D1": 0.3333333333333333,
+  "retx_exhausted_D1": 0.3333333333333333,
+  "link_outage_rate_D1": 0.8,
+  "drop_ratio_D1_deadline": 0.3333333333333333,
+  "PDR_aggregate": 0.3333333333333333,
+  "energy_joules_total": 0.005,
+  "spectrum_utilization_avg": 0.4167,
+  "power_cap_violation": 2,
+  "note": "D1 only, 4 subchannels (n4 action-masked every slot), power cap 2.0 W enforced as a FEASIBILITY MASK with FIXED per-attempt power p_w=1.0 (NO equal-power split). Each slot n1,n2 transmit (cum 1.0, 2.0 <= cap); n3 would push cum to 3.0 > 2.0 -> power_cap_violation (transmits nothing, consumes no packet); n4 masked_forbidden_action. Q2 DEADLINE_EXPIRED at slot1 (deadline_slot=0); Q1 RETRANSMISSION_EXHAUSTED at slot1 (2nd failure, max_retx=1) BEFORE its deadline_slot=2 -> mutually exclusive drop reasons. Q3 delivered at slot2 (H2=1.0 -> gamma=1.0>=gamma_th) on n1; n2/n3 idle_queue_empty (Q3 taken, no other packet). Transmissions: slot0 2, slot1 2, slot2 1 = 5; outages 4 -> link-outage 0.8. energy = 5*p_w*tau = 0.005 J. spectrum util = (2/4+2/4+1/4)/3 = 0.4167 (denominator = N=4 subchannels). power_cap_violation counted in slots 0 and 1 (n3) = 2."
+}

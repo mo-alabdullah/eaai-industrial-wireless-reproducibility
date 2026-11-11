@@ -1,0 +1,83 @@
+{
+  "_comment": "PRIMARY action spec generated from primary_scenario_config.json by generate_primary_action_spec.py (r27 \u00a75 / r28 \u00a75). Do not hand-edit.",
+  "tier": "primary",
+  "scenario_id": "PRIMARY-IIoT-6G",
+  "version": "primary-v1",
+  "config_hash": "cebbd09f2dd94912b5cd22cf89852848c01e95b3626ee0a313ac45fec6980523",
+  "canonical_signature": "a90e96525e6061df3b5e41c7377ef9a4dd20a2f0e095632d35df41dbb2980cbc",
+  "N_primary": 8,
+  "K": 8,
+  "B": 8,
+  "P": 4,
+  "n_static": 6,
+  "n_mobile": 2,
+  "device_order": [
+    "static_0",
+    "static_1",
+    "static_2",
+    "static_3",
+    "static_4",
+    "static_5",
+    "mobile_0",
+    "mobile_1"
+  ],
+  "beam_order": [
+    "beam_0",
+    "beam_1",
+    "beam_2",
+    "beam_3",
+    "beam_4",
+    "beam_5",
+    "beam_6",
+    "beam_7"
+  ],
+  "power_order": [
+    "power_0",
+    "power_1",
+    "power_2",
+    "power_3"
+  ],
+  "powers": {
+    "power_0": 0.05,
+    "power_1": 0.1,
+    "power_2": 0.2,
+    "power_3": 0.4
+  },
+  "class_map": {
+    "static_0": "static",
+    "static_1": "static",
+    "static_2": "static",
+    "static_3": "static",
+    "static_4": "static",
+    "static_5": "static",
+    "mobile_0": "mobile",
+    "mobile_1": "mobile"
+  },
+  "per_device_n_max": {
+    "static_0": 3,
+    "static_1": 3,
+    "static_2": 3,
+    "static_3": 3,
+    "static_4": 3,
+    "static_5": 3,
+    "mobile_0": 2,
+    "mobile_1": 2
+  },
+  "per_device_power_cap_w": {
+    "static_0": 0.8,
+    "static_1": 0.8,
+    "static_2": 0.8,
+    "static_3": 0.8,
+    "static_4": 0.8,
+    "static_5": 0.8,
+    "mobile_0": 0.8,
+    "mobile_1": 0.8
+  },
+  "beam_forbidden": [],
+  "power_forbidden": [],
+  "ordering_rule": {
+    "device": "static devices first in ascending index (static_0..static_{Ks-1}), then mobile devices in ascending index (mobile_0..mobile_{Km-1})",
+    "beam": "codebook index ascending (beam_0..beam_{B-1})",
+    "power": "power level ascending by watts (power_0 is the smallest watt value)"
+  }
+}

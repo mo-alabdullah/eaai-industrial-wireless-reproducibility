@@ -1,0 +1,24 @@
+kind,a,b,c,d,e
+# Fourth deterministic design fixture — the SELECTED-POLICY packet-aware mask.
+# The ACTION carries explicit (device, receive-beam, power) or idle tokens per subchannel.
+# Device D1 is allocated N=3 subchannels but has only 2 eligible packets, so after Q1,Q2 are
+# reserved the SURPLUS subchannel n3 carries an EXPLICIT idle token (idle_action) chosen by the
+# policy. There is NO environment-side conversion to idle_queue_empty. A non-idle token to the
+# exhausted queue would be a packet_mask_violation (see the tamper test).
+param,sigma2,1.0,,,linear noise power
+param,gamma_th,1.0,,,Shannon threshold 2^(Z/(W*tau))-1
+param,Z_bits,100,,,packet size
+param,W_hz,100000,,,subchannel bandwidth
+param,tau_s,0.001,,,slot duration (W*tau=100)
+param,horizon_slots,1,,,single slot t=0
+param,n_subchannels,3,,,explicit N (canonical set n1,n2,n3)
+param,max_retx,1,,,retry once
+beamgain,b1,2.0,,,max-gain receive beam
+powerlevel,p1,1.0,,,low power
+powercap,D1,5.0,,,generous cap (not exercised here)
+packet,Q1,D1,0,100,,eligible; delivered on n1
+packet,Q2,D1,0,100,,eligible; delivered on n2
+link,D1,0,1.0,,,H2=1 -> gamma=p1*H2*b1=2.0>=gamma_th
+action,0,n1,D1,b1,p1,serve Q1 -> gamma=2.0 deliver
+action,0,n2,D1,b1,p1,serve Q2 -> gamma=2.0 deliver
+action,0,n3,D1,idle,idle,SURPLUS subchannel -> explicit idle token (no packet left) -> idle_action

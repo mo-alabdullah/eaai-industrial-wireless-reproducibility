@@ -1,0 +1,110 @@
+{
+  "_comment": "r34 Phase 1: LOCKED numeric experiment config for the M2 simulator. Physics constants + PREREGISTERED_DESIGN_FACTORs. Loaded by the M2 env; does NOT affect the action-spec config hash. See primary_design_parameter_register.md.",
+  "config_version": "primary-exp-v1",
+
+  "phy": {
+    "slot_duration_tau_s": 0.001,
+    "subchannel_bandwidth_W_hz": 1000000.0,
+    "n_subchannels": 8,
+    "total_bandwidth_hz": 8000000.0,
+    "receiver_noise_figure_db": 7.0,
+    "temperature_k": 290.0,
+    "boltzmann_k": 1.380649e-23,
+    "noise_power_w_rule": "sigma_n^2 = k_B*T*W*10^(NF/10)",
+    "shannon_threshold_bps_per_hz": 1.0,
+    "_class": "PHYSICS constants + PREREGISTERED_DESIGN_FACTOR (tau, W, NF)"
+  },
+
+  "channel": {
+    "source": "3GPP TR 38.901 / ETSI TR 138 901 V18.1.0 (2026-02), Release 18, Indoor Factory InF-SH",
+    "scenario": "InF-SH",
+    "hall_x_m": 300.0,
+    "hall_y_m": 150.0,
+    "ap_height_m": 8.0,
+    "ut_height_m": 1.5,
+    "carrier_fc_ghz": 3.5,
+    "pathloss_los_db_rule": "PL_LOS = 31.84 + 21.50*log10(d3D) + 19.00*log10(fc_GHz)",
+    "pathloss_los_sf_db": 4.0,
+    "pathloss_nlos_infsh_db_rule": "PL_NLOS_InF-SH = max(PL_LOS, 32.4 + 23.0*log10(d3D) + 20.0*log10(fc_GHz))  [ETSI TR 138 901 V18.1.0 Table 7.4.1-1, InF-SH]",
+    "pathloss_nlos_sf_db": 5.9,
+    "pathloss_nlos_infdh_db_rule": "DISTINCT (InF-DH, not used here): max(PL_LOS, 33.63 + 21.9*log10(d3D) + 20.0*log10(fc_GHz)), SF=4.0",
+    "applicability_d3d_max_m": 600.0,
+    "los_probability_rule": "InF high-BS: P_LOS = exp(-d2D / k_subce), k_subce = (-d_clutter/ln(1-r)) * (hBS-hUT)/(hc-hUT)  [ETSI TR 138 901 V18.1.0 7.4.2 / Table 7.2-4]",
+    "clutter_density_r": 0.20,
+    "clutter_size_d_clutter_m": 10.0,
+    "clutter_height_hc_m": 5.0,
+    "clutter_height_hc_m_class": "PREREGISTERED_DESIGN_FACTOR (NOT the 3GPP calibration value); sensitivity includes the InF-SH sparse-clutter calibration hc=2 m",
+    "clutter_height_hc_m_sensitivity": [2.0, 5.0],
+    "k_subce_m_primary_derived": 83.2255,
+    "k_subce_m_calibration_hc2_derived": 582.58,
+    "K_R_ricean_db": 7.0,
+    "K_R_ricean_db_sensitivity": [3.0, 7.0, 13.0],
+    "source": "ETSI TR 138 901 V18.1.0 (2026-02) = 3GPP TR 38.901 Release 18",
+    "_class": "large-scale InF-SH pathloss + LOS-probability form = SOURCED (ETSI TR 138 901 V18.1.0 clauses); clutter height hc=5 m + spatial Rician/Rayleigh beam-level abstraction + K_R = PREREGISTERED_DESIGN_FACTOR / DESIGN_MODEL (NOT a full TR 38.901 clustered channel; hc=2 m is the sourced calibration sensitivity)"
+  },
+
+  "traffic": {
+    "arrival_process": "independent Bernoulli per device per slot",
+    "load_grid_p_arrival": [0.05, 0.10, 0.20, 0.30, 0.40],
+    "scale_reference_load_p": 0.20,
+    "packet_size_bytes_static": 256,
+    "packet_size_bytes_mobile": 64,
+    "queue_capacity_static": 32,
+    "queue_capacity_mobile": 16,
+    "deadline_slots_static": 10,
+    "deadline_slots_mobile": 2,
+    "max_retx_static": 3,
+    "max_retx_mobile": 1,
+    "Abar_static_scale_ref_pkts_per_slot": 1.20,
+    "Abar_mobile_scale_ref_pkts_per_slot": 0.40,
+    "_class": "PREREGISTERED_DESIGN_FACTOR; mobile deadline order (2 slots = 2 ms with tau=1ms) anchored by TS 22.261 ms-order factory requirements (our preregistered mapping, not a standard-mandated exact mapping)"
+  },
+
+  "targets": {
+    "rho_static": 0.01, "rho_mobile": 1e-05,
+    "epsilon_static": 0.01, "epsilon_mobile": 1e-04,
+    "eta_static": 0.01, "eta_mobile": 1e-03,
+    "_class": "rho_mobile SOURCED order (TS 22.261 URLLC 1e-5); others PREREGISTERED_DESIGN_FACTOR"
+  },
+
+  "power": {
+    "primary_power_grid_w": [0.05, 0.1, 0.2, 0.4],
+    "P_max_w": 0.4,
+    "n_subchannels": 8,
+    "P_envelope_max_w": 3.2,
+    "P_bar_w": 1.6,
+    "P_bar_fraction": 0.5,
+    "P_bar_sensitivity_w": [1.28, 1.60, 1.92],
+    "per_device_total_cap_w": 0.8,
+    "T_meas_slots": 100,
+    "_class": "P_bar = 0.5 * P_envelope_max (= 0.5*N*P_max); PREREGISTERED_DESIGN_FACTOR"
+  },
+
+  "beam_csi": {
+    "codebook_type": "DFT", "array_type": "ULA", "n_antennas": 8, "codebook_size": 8,
+    "d_CSI_primary_slots": 1,
+    "d_CSI_sensitivity_slots": [0, 1, 2, 3],
+    "beam_observation": "stale CSI delayed by d_CSI slots; learned/predictive selection; perfect-current-CSI Max-Gain = oracle",
+    "_class": "d_CSI + K_R PREREGISTERED_DESIGN_FACTOR"
+  },
+
+  "mobility": {
+    "family": "waypoint / grid-constrained piecewise-linear",
+    "speed_min_mps": 0.0, "speed_max_mps": 2.0,
+    "speed_sensitivity_mps": [1.0, 2.0, 3.0],
+    "update_interval_slots": 1,
+    "boundary": "reflect at hall walls",
+    "_class": "trajectory family PREREGISTERED_DESIGN_FACTOR; speed envelope literature-anchored (AMR/AGV ~2 m/s)"
+  },
+
+  "lppo": {
+    "gamma_slot": 0.99, "gae_lambda": 0.95,
+    "gamma_cost": 1.0, "lambda_cost": 0.95, "lambda_cost_sensitivity": [0.9, 0.95, 1.0],
+    "ppo_clip_eps": 0.2, "entropy_coeff": 0.01, "value_coeff": 0.5, "target_kl": 0.02,
+    "reward_weights_primary": {"w1_delivered": 1.0, "w4_hol": 0.1, "w6_util": 0.1},
+    "reward_weights_baseline": {"w1": 1.0, "w2": 0.5, "w3": 0.5, "w4": 0.1, "w5": 0.1, "w6": 0.1},
+    "eta_lambda": 0.01, "A_floor": 1e-06,
+    "N_ep_primary": 32, "n_seeds_E1": 10,
+    "_class": "all PREREGISTERED_DESIGN_FACTOR; numerical tuning is M2/E1"
+  }
+}

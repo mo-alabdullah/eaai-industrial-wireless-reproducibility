@@ -1,0 +1,17 @@
+{
+  "PDR_D1": 1.0,
+  "PDR_D2": 0.0,
+  "PDR_aggregate": 0.5,
+  "deadline_violation_D1": 0.0,
+  "deadline_violation_D2": 1.0,
+  "retx_exhausted_D1": 0.0,
+  "retx_exhausted_D2": 0.0,
+  "link_outage_rate_D1": 0.5,
+  "link_outage_rate_D2": 1.0,
+  "drop_ratio_D1_deadline": 0.0,
+  "drop_ratio_D2_deadline": 1.0,
+  "energy_joules_total": 0.004,
+  "spectrum_utilization_avg": 0.6667,
+  "power_cap_violation": 0,
+  "note": "deadline_slot=a+D-1; expiry before service; D2 has 2 transmissions (slot2 expired pre-service); outage!=1-PDR (D1 outage 0.5, PDR 1.0)"
+}

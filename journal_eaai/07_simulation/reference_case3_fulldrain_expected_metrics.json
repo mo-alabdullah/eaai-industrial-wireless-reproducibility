@@ -1,0 +1,18 @@
+{
+  "PDR_lb_D1": 1.0,
+  "PDR_resolved_D1": 1.0,
+  "censored_fraction_D1": 0.0,
+  "drop_ratio_excl_censored_D1": 0.0,
+  "link_outage_rate_D1": 0.25,
+  "PDR_lb_aggregate": 1.0,
+  "PDR_resolved_aggregate": 1.0,
+  "censored_fraction_aggregate": 0.0,
+  "energy_joules_total": 0.005,
+  "spectrum_utilization_avg": 0.5,
+  "beam_mask_violation": 1,
+  "power_mask_violation": 1,
+  "power_cap_violation": 1,
+  "beam_suboptimal": 1,
+  "packet_mask_violation": 0,
+  "note": "FULL drain: an extra slot-3 action serves Q3 to DELIVERED, so censored set is empty and PDR_lb == PDR_resolved == 1.0 (censored_fraction 0). Same full-action violations as fixture 3. tx=4 (slot0 Q1, slot1 Q2, slot2 Q2, slot3 Q3); outage=1 -> 1/4=0.25; energy=(1+1+2+1)*tau=0.005; util=(0.5+0.5+0.5+1.0)/4=0.625."
+}

@@ -1,0 +1,9 @@
+t,subchannel,device,packet,beam,power,H2,gamma,success,event
+0,n1,D1,Q1,b1,p1,1.0,2.0,1,deliver
+0,n2,D1,,b1,p1,,,,beam_mask_violation
+1,n1,D1,Q2,b2,p1,1.0,0.5,0,fail_retry
+1,n2,D1,,b1,p2,,,,power_mask_violation
+2,n1,D1,Q2,b1,p2,1.0,4.0,1,deliver
+2,n2,D1,,b1,p2,,,,power_cap_violation
+3,n1,D1,Q3,b1,p1,1.0,2.0,1,deliver
+3,n2,D1,,idle,idle,,,,idle_action

@@ -1,0 +1,73 @@
+# =============================================================================================
+# RUNTIME LOCK FOR THE FROZEN FINAL PIPELINE
+# Created 2026-09-22. Exact-version pinned. Covers ONLY what the frozen final pipeline imports.
+#
+# WHY THIS FILE EXISTS
+# --------------------
+# The repository carries three older dependency specifications, and none is an authoritative
+# reproducible lock for the final pipeline:
+#
+#   07_simulation/pyproject.toml    STALE - requires-python >=3.11 and lists stable-baselines3,
+#                                   sb3-contrib, torch and gymnasium. None of these is imported
+#                                   anywhere in the executed code, and the project record states
+#                                   torch was never installable in this environment.
+#   07_simulation/environment.yml   STALE - same torch/SB3 contradiction; python=3.11.
+#   07_simulation/requirements.txt  ACCURATE IN INTENT - states plainly that the implementation is
+#                                   PURE NUMPY and that torch/TF/SB3/gymnasium are intentionally
+#                                   NOT dependencies. But it pins with >= , so it is not a lock.
+#
+# This file is the lock. It is derived from an AST import scan of the frozen execution paths
+# reachable from run_final.py (run_unit_core), analyse_final.py, the exact-optimisation framework,
+# the simulator modules, and every test in the pre-run suite.
+#
+# SCAN RESULT: numpy is the ONLY third-party import. 20 import sites. Everything else the pipeline
+# uses is Python standard library:
+#   __future__, argparse, collections, csv, dataclasses, datetime, hashlib, itertools, json, math,
+#   multiprocessing, os, pathlib, platform, shutil, subprocess, sys, tempfile, time, typing
+#
+# DELIBERATELY EXCLUDED (present in older specs and/or on developer machines, but NOT imported by
+# the frozen final pipeline, so not locked here):
+#   torch, tensorflow, stable-baselines3, sb3-contrib, gymnasium  - never imported; see above
+#   scipy, pandas                                                 - never imported by this pipeline
+#   pyyaml                                                        - governance tooling only
+#   matplotlib                                                    - FIGURE GENERATION ONLY. The
+#     figure scripts are specified but not yet written. When they are, matplotlib becomes a
+#     dependency of the FIGURE stage and must be added to a separate lock, pinned at that time.
+#     It is not required to execute the final run or to compute any endpoint.
+#   pytest                                                        - unavailable in the reference
+#     environment; the suites run under direct invocation / unittest.
+#
+# =============================================================================================
+# PYTHON VERSION (required, not merely recommended)
+# -------------------------------------------------
+#   python_requires == 3.10.12
+#
+# Source of the version choice: this is the interpreter of the previously audited executed
+# environment, independently corroborated on 2026-09-22 against the reference environment
+# (Python 3.10.12, NumPy 2.2.6, aarch64 Linux). The >=3.11 constraint in pyproject.toml belongs to
+# the stale torch/SB3 specification and is NOT the executed environment.
+#
+# NumPy 2.2.6 supports Python 3.10-3.13, so 3.10.12 is within its supported range.
+# =============================================================================================
+
+numpy==2.2.6
+
+# =============================================================================================
+# PROVENANCE OF EACH PIN
+# ----------------------
+# numpy==2.2.6
+#   Source: previously audited executed environment, recorded in the project environment audit and
+#   corroborated 2026-09-22 by direct interrogation of the reference interpreter
+#   (`numpy.__version__` -> '2.2.6'). This is an observed executed version, not a guess.
+#
+# NO OTHER PIN IS ASSERTED. If a future stage introduces a further third-party import, its version
+# must be established from an executed environment or explicitly decided by the author; it must not
+# be inferred.
+#
+# INSTALL (exact, no upgrades):
+#   python3.10 -m venv .venv
+#   .venv/bin/python -m pip install --require-virtualenv --no-input \
+#       -r 13_journal_extension/code/final/requirements-final.lock.txt
+#
+# Do NOT run `pip install --upgrade`. Do NOT install "latest".
+# =============================================================================================

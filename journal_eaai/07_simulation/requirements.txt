@@ -1,0 +1,21 @@
+# Runtime dependencies for the FINAL implementation.
+#
+# The simulator, the PPO family (BSA-Unconstrained-PPO, BSA-Penalty-PPO, BSA-C-PPO), the heuristic
+# baselines, the statistics, and the figure/table scripts are implemented in PURE NUMPY (CPU only).
+# No deep-learning framework is used or required: torch, TensorFlow, stable-baselines3, sb3-contrib
+# and gymnasium are intentionally NOT dependencies. The confirmatory campaign was produced with the
+# packages below.
+numpy>=1.26          # arrays, vectorised PPO, channel/env math, statistics (CIs, permutation tests)
+matplotlib>=3.8      # publication figures, generated from the raw confirmatory records
+pyyaml>=6.0          # reads model_decisions.yaml
+
+# Tests run with the standard-library unittest runner (`python3 -m unittest ...`); pytest is optional.
+
+# Implementation notes (accurate to the final study):
+#  - Per-slot action: a length-N JOINT AUTOREGRESSIVE sequence over the flat token alphabet
+#    Discrete(1 + K*B*P); one joint slot log-probability and one PPO clipped ratio per physical slot.
+#  - Constraint mechanism (SELECTED): BSA-C-PPO uses a projected Lagrangian multiplier on the raw
+#    additive episode-sum shortfalls, with one shared vector cost critic (J_cost = 3|C| + 1 = 7),
+#    gamma_cost = 1, lambda_cost = 0.95, and one multiplier trajectory per seed. BSA-Penalty-PPO uses
+#    a fixed penalty; BSA-Unconstrained-PPO omits the constraint term. These are the mechanisms as
+#    implemented; NO theoretical convergence or safety guarantee is claimed or transferred.
