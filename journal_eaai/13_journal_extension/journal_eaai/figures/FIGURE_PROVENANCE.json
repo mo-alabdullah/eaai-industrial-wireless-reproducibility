@@ -1,0 +1,23 @@
+{
+  "deterministic": true,
+  "development_latency_source": "EXACT_SOLVER_LATENCY.md (DEVELOPMENT tier, per solve)",
+  "generator": "journal_eaai/figures/generate_final_figures.py",
+  "inputs": {
+    "EXACT_SOLVER_LATENCY.md": "32d590c867671695882e616c238334ccc0e5c902005d8d17957bb713d1a57b5d",
+    "results_final/analysis/descriptive/DESCRIPTIVE_SUMMARIES.json": "c67599938d3d9efb9984469f0b0901264c24746e3a8ffdacd97f7253946849fa",
+    "results_final/analysis/endpoints.json": "14da718a03a1823b152e53ebc5aacf7d028f07aea0ee4b262d2e2434174aafc7"
+  },
+  "new_inferential_statistics_derived": false,
+  "outputs": {
+    "figure1_h2_paired_differences.pdf": "61b0f01bd453655e451c2de4ad6bce7ee6d554ab3f69b33ac4e606012647f539",
+    "figure1_h2_paired_differences.png": "e7aa78958a0b0f2f970d82047350c492dc09343fa86960354ab6b549862ebcff",
+    "figure2_decomposition_watts.pdf": "5901ccee2e9e1bc1e70a05943f3213933a130fa67250f9cfc7a0913f0fbc9e02",
+    "figure2_decomposition_watts.png": "e5a5bbb82499532e9f63a258f98f2bdb498ba6d67fdc183f31bdd84225096b1f",
+    "figure3_runtime_by_tier.pdf": "eca005ea8d28389af50b91a50a7773f086c2757af17c04a0cdf0e7cc5cb73bad",
+    "figure3_runtime_by_tier.png": "2bf415fd93fa04e7b8a1d6bde1363eec90af6317b43c4406a84b5aaa84dfa16a"
+  },
+  "random_resampling": false,
+  "raw_tree_digest_algorithm": "sha256(json.dumps({path relative to results_final/raw: file sha256}, sort_keys=True)) \u2014 canonical; identical to the campaign-closure records",
+  "raw_tree_digest_v1": "5b31e54dbe6c6a2b897768ee100cadb0248cedf8edc50497cf5dea7bf935852b",
+  "raw_tree_files": 400
+}
