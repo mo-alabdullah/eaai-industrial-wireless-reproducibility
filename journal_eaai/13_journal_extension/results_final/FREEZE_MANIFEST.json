@@ -1,0 +1,208 @@
+{
+  "combined_digest": "c3481380da7a1878b3c03622965b4536e225ef66d47f2ef7f739c6de79eab47c",
+  "created_utc": "2026-10-05T12:04:51+00:00",
+  "environment": {
+    "cpu_count": 12,
+    "machine": "arm64",
+    "numpy_version": "2.2.6",
+    "platform": "Darwin",
+    "platform_release": "27.0.0",
+    "python_version": "3.10.12"
+  },
+  "git": {
+    "branch": "master",
+    "commit_sha": "c77a3df1976c9b942c7480f0ec55c6ced3b7e075",
+    "git_available": true,
+    "repo_root": "/Users/sudogate/Projects/AI-Enabled Beamforming and Dynamic Spectrum Allocation for Reliable Long-Range IoT over 6G",
+    "worktree_clean": true,
+    "worktree_dirty_files": []
+  },
+  "group_digests": {
+    "exact_framework": "937b88422c06d2b4a86ab14c867155b00d291bd2cf2484f12c035ba7a0444cc3",
+    "exactness_tests": "d53707d4196f9ba896a0011f0a48cd20b8ea6d0c963e07924d58a760a0f2ccf2",
+    "final_pipeline": "f779dee356fa6843847ccdcc9211e5d269a006c29bf688b8db1702d8aed92b8b",
+    "frozen_manuscript_sections": "3f69a513f3c756f6cbf750fbcec4410499c67636713f175ac9f114233d0e4d71",
+    "protocol": "5f6edf1036974fd4363745b2e9dca02754bb0498d473a01f53f16cb48810ae77",
+    "simulator": "811c7ce85c768b7509b4fb965741242865235931c5d5750640c3f74b5ba7a742"
+  },
+  "groups": {
+    "exact_framework": {
+      "13_journal_extension/code/baselines_v2.py": {
+        "bytes": 9173,
+        "sha256": "d7eb8974dfda50244e5ad27f91885e856ec6d6351b1215b2890bbb53c56f4973"
+      },
+      "13_journal_extension/code/evaluation.py": {
+        "bytes": 5413,
+        "sha256": "c479ee80c35697803a0daf63b4b57f3f586ce3b2ee60af55deb1dc6249ca59c0"
+      },
+      "13_journal_extension/code/optimization/capture.py": {
+        "bytes": 2737,
+        "sha256": "fe2fae090a15b825ff9654b4ccc397b3db3f4795a4d8bee0cae73843d9abfad1"
+      },
+      "13_journal_extension/code/optimization/grids.py": {
+        "bytes": 2214,
+        "sha256": "0344f1c5fdb1d31fec4e08dbe02ef818ccc95879eab8e48bcc8c51a7d61b4de4"
+      },
+      "13_journal_extension/code/optimization/joint.py": {
+        "bytes": 16687,
+        "sha256": "690687a9f85356923108a8e320e877f79d0fddb9b0253183af3bab6c08f409f2"
+      },
+      "13_journal_extension/code/optimization/radio.py": {
+        "bytes": 16748,
+        "sha256": "af16be5a4c1a61a0d8d86fbf4b927b38292a644087b43b3220c42e4e2f0abe01"
+      }
+    },
+    "exactness_tests": {
+      "13_journal_extension/tests/test_optimization_benchmark.py": {
+        "bytes": 15945,
+        "sha256": "4d4b18f2a0b020e7bbd58a260cb78a61c05a817a50adc5cedcf7a21e2edac798"
+      }
+    },
+    "final_pipeline": {
+      "13_journal_extension/code/final/analyse_final.py": {
+        "bytes": 25881,
+        "sha256": "380d044033872265fab1d30d9f0fea39c1f106a61b5b7e7759d33128fce35605"
+      },
+      "13_journal_extension/code/final/ledger.py": {
+        "bytes": 6623,
+        "sha256": "aa6f7f0f73d4fc262ff266cca5b23f4379f4f48448da87a6077dcd05782fab23"
+      },
+      "13_journal_extension/code/final/requirements-final.lock.txt": {
+        "bytes": 4521,
+        "sha256": "407a7feb25e2a5a2d34995ee3d1f08db0c945291899ce760a19a5dd0c3127032"
+      },
+      "13_journal_extension/code/final/run_final.py": {
+        "bytes": 25733,
+        "sha256": "4823aa1222787f4cc5383a3268beb69b20cc612f6f389b75c5cb7b0cc46d88ef"
+      },
+      "13_journal_extension/code/final/schema.py": {
+        "bytes": 13908,
+        "sha256": "594576d33849124123710e8fcb316c1f9cdc87b034ef1c72d958c4d235612ead"
+      },
+      "13_journal_extension/code/final/stats.py": {
+        "bytes": 9906,
+        "sha256": "d9cbf79be52fbda2c7fb5e6a30f4316780e025dc83352fcd0e09d9f392e4b4a2"
+      },
+      "13_journal_extension/code/final/test_integration_nonfinal.py": {
+        "bytes": 16793,
+        "sha256": "2181083ef109bded15c57ecdea13e1a0f3fd1671df11992459e588cf3ae1e010"
+      },
+      "13_journal_extension/code/final/test_numerical_tolerance_e18.py": {
+        "bytes": 14239,
+        "sha256": "ca2475c591435ed6bef44f48cdd17e3508186fa28855afedbc5c1005b576212d"
+      },
+      "13_journal_extension/code/final/test_pairing.py": {
+        "bytes": 5593,
+        "sha256": "dcc0150c829182f7af35ea439fca22f33b221bd616c4b31ff346d6b0769ac328"
+      },
+      "13_journal_extension/code/final/test_provenance_gate.py": {
+        "bytes": 13433,
+        "sha256": "b84a62615b117c282ba41b3fcbca2ca470387d228f9f0c078ea0ae09e49555fa"
+      },
+      "13_journal_extension/code/final/test_seed_reseal_a3.py": {
+        "bytes": 6388,
+        "sha256": "8d76a76fe64eb3543bddd1f8dac8790636960f6d71ab7e2c82cd1a5dcfa85623"
+      },
+      "13_journal_extension/code/final/test_stats.py": {
+        "bytes": 10296,
+        "sha256": "25856d28c28d9ea7d74a40c97ccbefc2f88ca6cb02dfe684096077ac1f85fd94"
+      }
+    },
+    "frozen_manuscript_sections": {
+      "13_journal_extension/journal_eaai/_stage5d_intro_body.txt": {
+        "bytes": 11927,
+        "sha256": "42af07011791e8a204a7be2666b054595822cdd02b04964d4715d860590b7069"
+      },
+      "13_journal_extension/journal_eaai/_stage6e_related_work_body.txt": {
+        "bytes": 12050,
+        "sha256": "c40c5f4c7688f73e720cbbef1152fc3d331aa7ce6b1542e8650389fbfefdfd35"
+      },
+      "13_journal_extension/journal_eaai/_stage7a_system_model_body.txt": {
+        "bytes": 15316,
+        "sha256": "cf7bcc4f66e65c01ddc222c97fb1d6d364364e83cd5b56f89c313aa9a5cfaaf6"
+      },
+      "13_journal_extension/journal_eaai/_stage7b_framework_body.txt": {
+        "bytes": 21944,
+        "sha256": "d21ee787eee45ce7e009b66fd541af08aa97619bee5849aa3887fecd07ca42ec"
+      },
+      "13_journal_extension/journal_eaai/_stage7c_controller_body.txt": {
+        "bytes": 16916,
+        "sha256": "2d1946d1bdf689530e2e1fd220fa82ba113a5c4ffb0e0cbd4e6c5982952ed65a"
+      },
+      "13_journal_extension/journal_eaai/_stage7d_experimental_design_body.txt": {
+        "bytes": 13127,
+        "sha256": "0205c6358e88c73eb08bf79f2ea0e75dea398feef6688e334f82cb79e55cf5ee"
+      }
+    },
+    "protocol": {
+      "13_journal_extension/AMENDMENT_A3_FINAL_SEED_RESEAL.md": {
+        "bytes": 4720,
+        "sha256": "1d250724d958edd277b940ebcbe2b6775d5d2dc836dd03b040c2b641a67f8740"
+      },
+      "13_journal_extension/ERRATA_APPEND_ONLY.md": {
+        "bytes": 28078,
+        "sha256": "8a3b0c22052246512e822ed4f5dfd4805677b83dc1455830bc4177bf96524d46"
+      },
+      "13_journal_extension/FINAL_CONFIRMATORY_PROTOCOL_V2.md": {
+        "bytes": 18107,
+        "sha256": "3aa59359d47505ca90563b7af8e4006fb2ebe6f3e0c93cbe9d746d2eec6f7eb9"
+      },
+      "13_journal_extension/FINAL_TEST_READINESS_CHECKLIST.md": {
+        "bytes": 10227,
+        "sha256": "a9b82e7c71a593e7393a32d2c168649a30c2f5e844348201930870bad63e860d"
+      },
+      "13_journal_extension/INCIDENT_I01_RECORD.md": {
+        "bytes": 4892,
+        "sha256": "bbcfe8e144907ceec233bf8ec41a338bd5574a2ebcb1890d5b6cfda90d08f6a3"
+      },
+      "13_journal_extension/JOURNAL_PROTOCOL_V1.md": {
+        "bytes": 14957,
+        "sha256": "7229f708de368abafd704445fece1f1b11017507e5bfb576bbaa70b676f0c9e7"
+      },
+      "13_journal_extension/PRIMARY_HYPOTHESES_REGISTER.md": {
+        "bytes": 10431,
+        "sha256": "5ecee654259eab1a2732ec6e5f85418bf0d7cba8d61d7cd62404f37bc93b1b44"
+      }
+    },
+    "simulator": {
+      "07_simulation/conditional_mask_oracle.py": {
+        "bytes": 14083,
+        "sha256": "e86cb4e91a47940808076efb4f8594e7504128f9c745f3cd98326b7ea68c8d59"
+      },
+      "07_simulation/m2/agents_ppo.py": {
+        "bytes": 13619,
+        "sha256": "4da59e931c958ef690c68bc79d31001049091b7a8d09c0ac34f81a6d984dbdf0"
+      },
+      "07_simulation/m2/channel.py": {
+        "bytes": 6305,
+        "sha256": "8236f30723fc48dc98d8d8deb0129ac0586783fd8932f78fbc22377695da5677"
+      },
+      "07_simulation/m2/config.py": {
+        "bytes": 13629,
+        "sha256": "0f59af3c5a30da3ef7acee5fb521caa9bf8c71f38cb2b51f3ea24d98e9ace1b8"
+      },
+      "07_simulation/m2/env.py": {
+        "bytes": 25619,
+        "sha256": "a848aa4603bedb5843a97d065b0f9bd341eeb4ade85117b49379f47d182dee38"
+      },
+      "07_simulation/m2/metrics.py": {
+        "bytes": 1012,
+        "sha256": "2c87a099d7a18cdd8b4dfac25456db6e6e8e1153dfa28d6844dda6c7579a1041"
+      },
+      "07_simulation/m2/mobility.py": {
+        "bytes": 4123,
+        "sha256": "c916fd10ba35036e9f63f0071b0055b613780805cedafd64fcdf537520885b3e"
+      },
+      "07_simulation/primary_experiment_config.json": {
+        "bytes": 5251,
+        "sha256": "1735d1b4df39f63828dea34e9388c9e51cc0fd7c9238c03fa381e717c54bf412"
+      },
+      "07_simulation/token_codec.py": {
+        "bytes": 2635,
+        "sha256": "e74d4c7b46bded1ebb93de1fab5ce882c54deecbecd05baeed8aeb33c6ebb9ab"
+      }
+    }
+  },
+  "manifest_version": "freeze-manifest-v1",
+  "missing_files": []
+}

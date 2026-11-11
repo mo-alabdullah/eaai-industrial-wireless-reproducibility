@@ -1,0 +1,73 @@
+{
+  "comparators": [
+    "EDF-StaleBeam-MinFeasible",
+    "EDF+ExactFixedDemand",
+    "ExactFixedDemandRadio",
+    "OfflineExactAgedGain",
+    "OfflineExactCurrentGain",
+    "ContinuousPowerRef"
+  ],
+  "config_sha256": "2edbdf13de54dc6aece817ab1f01a65eb32b646b803d7b2be156e48f108661a2",
+  "created_utc": "2026-10-05T19:01:25+00:00",
+  "grids": [
+    "G0_icame",
+    "G2_wide10"
+  ],
+  "load": 0.4,
+  "n_units": 400,
+  "node_budget": 200000000,
+  "primary_cell": {
+    "grid": "G2_wide10",
+    "regime": "R3_aged"
+  },
+  "regimes": {
+    "R1_nominal": {
+      "d_csi": 1,
+      "dist": 1.0
+    },
+    "R3_aged": {
+      "d_csi": 5,
+      "dist": 2.0
+    }
+  },
+  "runner_sha256": "4823aa1222787f4cc5383a3268beb69b20cc612f6f389b75c5cb7b0cc46d88ef",
+  "scale": {
+    "H": 3,
+    "Km": 2,
+    "Ks": 6,
+    "N": 4
+  },
+  "schema_version": "final-schema-v1",
+  "seeds": [
+    50002,
+    50003,
+    50004,
+    50005,
+    50006,
+    50007,
+    50008,
+    50009,
+    50010,
+    50011,
+    50012,
+    50013,
+    50014,
+    50015,
+    50016,
+    50017,
+    50018,
+    50019,
+    50020,
+    50021
+  ],
+  "study": "FINAL CONFIRMATORY (JOURNAL_PROTOCOL_V1 + A2; FINAL_CONFIRMATORY_PROTOCOL_V2)",
+  "time_budget_s": 600.0,
+  "unit_definition": "(regime, grid, seed, warm-up)",
+  "warmups": [
+    20,
+    60,
+    100,
+    140,
+    180
+  ]
+}

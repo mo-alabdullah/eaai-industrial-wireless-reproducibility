@@ -1,0 +1,27 @@
+{
+  "created_utc": "2026-10-05T00:00:00+00:00",
+  "declared": {
+    "E18": {
+      "description": "E-18 numerical-validation commit. Will produce the single resumed unit R3_aged|G2_wide10|K8N4H3|w100|ALL|s50011. The hashes do not exist until the author commits the E-18 changes and regenerates the freeze manifest; until then this entry is PENDING and the analysis pipeline refuses to run.",
+      "freeze_manifest_sha256": "c3481380da7a1878b3c03622965b4536e225ef66d47f2ef7f739c6de79eab47c",
+      "git_commit": "c77a3df1976c9b942c7480f0ec55c6ced3b7e075",
+      "runner_sha256": "4823aa1222787f4cc5383a3268beb69b20cc612f6f389b75c5cb7b0cc46d88ef",
+      "status": "RESOLVED",
+      "units": 1
+    },
+    "ORIGINAL": {
+      "description": "Original frozen execution. Produced the 399 completed units. The manifest digest is reproducible from the committed blob contents at c508796 using the pre-E-18 tracked set (see erratum E-19).",
+      "freeze_manifest_sha256": "56e2a35714e17a4a5326f3acbc98cfcdaebc840490e54a36669a2644bb06b96c",
+      "git_commit": "c50879685be2173d06dd4dfd7be70a4fd39bfc40",
+      "runner_sha256": "82df6ed18e54cbf567b20b1d90eb05af566629f93fdd2284c62cafcf891b9fec",
+      "status": "RESOLVED",
+      "units": 399
+    }
+  },
+  "purpose": "Explicit declaration of every execution provenance present in the final confirmatory campaign. The campaign is NOT single-provenance; the analysis pipeline refuses any row whose (runner_sha256, freeze_manifest_sha256) pair is not declared here, and refuses to run while any declared entry is PENDING.",
+  "registry_version": "provenance-registry-v1",
+  "scientific_invariants_unchanged_across_provenances": {
+    "config_sha256": "2edbdf13de54dc6aece817ab1f01a65eb32b646b803d7b2be156e48f108661a2",
+    "note": "The frozen configuration digest must be byte-identical for every unit. A provenance split may differ in CODE hash only. Seed set, regimes, grids, comparators, endpoints and the row schema are unchanged."
+  }
+}
