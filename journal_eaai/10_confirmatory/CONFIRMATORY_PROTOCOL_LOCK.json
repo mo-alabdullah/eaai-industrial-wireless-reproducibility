@@ -1,0 +1,117 @@
+{
+  "protocol": "CONFIRMATORY_PROTOCOL_LOCK v1 (r36)",
+  "frozen_before_confirmatory_seeds": true,
+  "scenario": {
+    "n_static": 6,
+    "n_mobile": 2,
+    "N_subchannels": 4,
+    "M_antennas": 8,
+    "B_beams": 8,
+    "P_levels": 4,
+    "power_grid_w": [
+      0.05,
+      0.1,
+      0.2,
+      0.4
+    ],
+    "P_max_w": 0.4,
+    "per_device_cap_w": 0.8,
+    "fc_ghz": 28.0,
+    "hall": "300x150",
+    "tau_s": 0.001,
+    "W_hz": 1000000.0,
+    "NF_db": 7,
+    "d_CSI": 1,
+    "scenario": "InF-SH mmWave amendment"
+  },
+  "channel": {
+    "LOS": "31.84+21.50log10(d3D)+19log10(fc) SF4",
+    "NLOS_InF-SH": "max(LOS,32.4+23log10(d3D)+20log10(fc)) SF5.9",
+    "k_subce_m": 83.2264,
+    "clutter": {
+      "r": 0.2,
+      "d_clutter": 10,
+      "hc": 5,
+      "hc_sensitivity": [
+        2,
+        5
+      ]
+    },
+    "fading": "Gauss-Markov shadow + AR(1)/Jakes",
+    "K_R_db": 7
+  },
+  "traffic": {
+    "arrival": "Bernoulli",
+    "load_grid": [
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.4
+    ],
+    "p_ref": 0.2,
+    "delivery_floor_static": 0.99,
+    "delivery_floor_mobile": 0.995,
+    "URLLC_1e-5": "STANDARD_REFERENCE only"
+  },
+  "power_constraint": {
+    "P_bar_w": 0.8,
+    "sensitivity": [
+      0.64,
+      0.8,
+      0.96
+    ],
+    "C_pow": "sum_{W_meas}(P_t-P_bar), drain excluded"
+  },
+  "reward": "BSA reliability r=w1*d - w4*hol + w6*util (w7_se=0)",
+  "training_budget": {
+    "selected": "A (8 ep/upd x 10 updates)",
+    "note": "minimal; larger budgets do not clear the gate"
+  },
+  "hidden_size": 48,
+  "learning_rate": 0.008,
+  "eta_lambda": 0.01,
+  "gamma_cost": 1.0,
+  "lambda_cost": 0.95,
+  "ppo_clip": 0.2,
+  "penalty_coeff": 5.0,
+  "calibration_seeds": [
+    10001,
+    10002,
+    10003
+  ],
+  "confirmatory_seeds": [
+    20001,
+    20002,
+    20003,
+    20004,
+    20005,
+    20006,
+    20007,
+    20008,
+    20009,
+    20010
+  ],
+  "methods": [
+    "L1-Fixed-Random",
+    "L1-Fixed-BasePPO",
+    "Random",
+    "RoundRobin",
+    "EDF",
+    "StaleMaxGain",
+    "MaxSINROracle",
+    "PerfectMaxGain",
+    "LastBeam",
+    "BSA-Unconstrained-PPO",
+    "BSA-Penalty-PPO",
+    "BSA-C-PPO"
+  ],
+  "evaluation_horizon": "T_meas=200 + full drain",
+  "statistical_tests": "paired sign-flip permutation + Holm; pooled ratio-of-sums descriptive only",
+  "config_sha256": "6467d5750ad3e7a235115b895917bdb82cdbf8e5b77280fc53bd90f01ff61001",
+  "code_sha256": "0caeb3ce17a3fd909fffa7d38d7745bce1dafac49d6ad75d102729ffd99e2e80",
+  "gates": {
+    "beam_learning": "NOT MET (calibration)",
+    "constraint_differentiation": "NOT MET (calibration)"
+  }
+}
