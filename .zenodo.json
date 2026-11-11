@@ -1,0 +1,24 @@
+{
+  "title": "Exact Optimization References for Industrial Wireless Uplinks: Reproducibility Archive",
+  "upload_type": "software",
+  "version": "2.0.0",
+  "license": "MIT",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "Alabdullah, Mohammed",
+      "orcid": "0009-0001-0826-4380",
+      "affiliation": "Iran University of Science and Technology, Computer Networks Engineering, Tehran, Iran"
+    }
+  ],
+  "description": "<p>Reproducibility archive for the journal extension on exact optimisation references for joint radio-resource allocation in industrial wireless uplinks. It contains the exact fixed-demand radio-allocation solver, the continuous-power mathematical lower reference, the offline finite-horizon exact references on aged and current beam gain (noncausal, non-deployable diagnostic references), the frozen confirmatory campaign (400 execution units, 2,400 result rows, paired seeds 50002&ndash;50021), the final analysis and descriptive extraction, a deterministic generator for Figures 1&ndash;3, the final table records, exactness and numerical-tolerance tests, and integrity records (canonical raw-tree digest v1 5b31e54dbe6c6a2b897768ee100cadb0248cedf8edc50497cf5dea7bf935852b). The conference artifact on the main branch is unchanged.</p>",
+  "keywords": [
+    "industrial wireless uplink",
+    "reinforcement learning",
+    "exact optimization",
+    "radio resource allocation",
+    "beamforming",
+    "power quantization",
+    "reproducibility"
+  ]
+}

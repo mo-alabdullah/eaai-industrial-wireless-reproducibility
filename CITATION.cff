@@ -1,14 +1,26 @@
 cff-version: 1.2.0
-message: "If you use this software or data, please cite the associated manuscript."
-title: "AI-Enabled Beamforming and Dynamic Spectrum Allocation for Reliable Long-Range IoT over 6G: Reproducibility Artifact"
+message: "If you use this reproducibility archive, please cite it using the metadata below."
 type: software
-authors:
-  - family-names: "Alabdullah"
-    given-names: "Mohammed"
-    email: "m.w@sudo-gate.com"
-    orcid: "https://orcid.org/0009-0001-0826-4380"
-    affiliation: "Department of Network Engineering, School of Computer Engineering, Iran University of Science and Technology (IUST), Tehran, Iran"
-version: "1.0.0"
-date-released: 2026-08-13
+title: "Exact Optimization References for Industrial Wireless Uplinks: Reproducibility Archive"
+version: "2.0.0"
 license: MIT
 repository-code: "https://github.com/mo-alabdullah/ai-beamforming-dynamic-spectrum-6g-iot"
+authors:
+  - family-names: Alabdullah
+    given-names: Mohammed
+    orcid: "https://orcid.org/0009-0001-0826-4380"
+    email: m.w@sudo-gate.com
+    affiliation: "Iran University of Science and Technology, Computer Networks Engineering, Tehran, Iran"
+keywords:
+  - industrial wireless uplink
+  - reinforcement learning
+  - exact optimization
+  - radio resource allocation
+  - beamforming
+  - power quantization
+  - reproducibility
+abstract: >-
+  Reproducibility archive for the journal extension: exact fixed-demand radio-allocation solver,
+  continuous-power mathematical lower reference, offline finite-horizon exact references on aged
+  and current beam gain, the frozen confirmatory campaign (400 execution units, 2,400 rows, paired
+  seeds 50002-50021), final analysis, deterministic figure generation and integrity records.
